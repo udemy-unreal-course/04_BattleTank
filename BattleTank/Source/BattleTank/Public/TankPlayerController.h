@@ -26,6 +26,12 @@ public:
 	// where the crosshairs intersects the world
 	void AimTowardsCrosshair();
 
+	// Return OUOT parameter, true if hit landscape
+
+	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+
+
+
 /* public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
