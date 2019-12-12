@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "TankAimingComponent.h"
 #include "CoreMinimal.h"
 #include "Tank.h"
 #include "Engine/World.h"
@@ -19,6 +20,8 @@ class BATTLETANK_API ATankAIController : public AAIController
 public:
 
 	virtual void BeginPlay() override;
+
+	virtual void Tick(float DeltaTime) override; ///
 
 private:
 	ATank* GetControlledTank() const;

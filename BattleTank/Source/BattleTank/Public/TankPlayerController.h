@@ -2,8 +2,11 @@
 
 #pragma once
 
+#include "TankAimingComponent.h"
 #include "CoreMinimal.h"
 #include "Tank.h"
+// #include "Engine.h"
+#include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h" // Must be the last include
 
@@ -19,6 +22,7 @@ public:
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float DeltaTime) override;
+
 
 private:
 	ATank* GetControlledTank() const;
@@ -37,7 +41,20 @@ private:
 	UPROPERTY(EditAnywhere)
 	float CrossHairYLocation = 0.3333f;
 	
-	bool GetLookDirection(FVector2D ScreenLocation, FVector LookDirection) const;
+	UPROPERTY(EditAnywhere)
+	float LineTraceRange = 1000000.0f;
+	// FHitResult HitLocation;
+
+	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+
+
+
+	/* UPROPERTY(EditAnywhere)
+	float LineTraceRange = 10.f;
+	bool GetLookVectorHitLocation(FVector &LookDirection);
+	FHitResult HitLocation;*/ 
+
 /* public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
