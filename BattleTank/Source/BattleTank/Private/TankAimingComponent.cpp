@@ -54,13 +54,14 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 			false,
 			0,
 			0,
-			ESuggestProjVelocityTraceOption::DoNotTrace
+			ESuggestProjVelocityTraceOption::TraceFullPath
+			/// Original do not trace: ESuggestProjVelocityTraceOption::DoNotTrace
 			/// FCollisionResponseParams::DefaultResponseParam, TArray<AActor*>(), true
 			)
 
 
 		){
-	// Calculate the OutLaunchVelocity
+		// Calculate the OutLaunchVelocity
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		auto Tankname = GetOwner()->GetName();
 		UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *Tankname, *AimDirection.ToString());
